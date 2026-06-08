@@ -1,6 +1,99 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Navigation */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+/* Search Bar */
+.search-bar input {
+    width: 250px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+}
+
+.search-bar input:focus {
+    border-color: #007bff;
+}
+
+/* Cart */
+.cart {
+    position: relative;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Notification Badge */
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Main Content */
+main {
     text-align: center;
+    padding: 50px 20px;
+}
+
+main h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+main p {
+    color: #666;
 }

@@ -1,11 +1,14 @@
-/* Reset */
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Header */
+
+
+
 header {
     display: flex;
     justify-content: space-between;
@@ -15,14 +18,15 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo */
+
+
 .logo {
     font-size: 24px;
     font-weight: bold;
     color: #333;
 }
 
-/* Navigation */
+
 nav ul {
     display: flex;
     list-style: none;
@@ -40,7 +44,7 @@ nav ul li a:hover {
     color: #007bff;
 }
 
-/* Search Bar */
+
 .search-bar input {
     width: 250px;
     padding: 8px 12px;
@@ -53,14 +57,13 @@ nav ul li a:hover {
     border-color: #007bff;
 }
 
-/* Cart */
 .cart {
     position: relative;
     font-size: 24px;
     cursor: pointer;
 }
 
-/* Notification Badge */
+
 .cart-count {
     position: absolute;
     top: -8px;
@@ -76,14 +79,17 @@ nav ul li a:hover {
     align-items: center;
 }
 
-/* Hamburger Menu */
+
+
 .hamburger {
     display: none;
     font-size: 28px;
     cursor: pointer;
 }
 
-/* Main Content */
+
+
+
 main {
     text-align: center;
     padding: 50px 20px;
@@ -98,7 +104,9 @@ main p {
     color: #666;
 }
 
-/* Responsive Design */
+
+
+
 @media (max-width: 768px) {
 
     header {
@@ -132,7 +140,8 @@ main p {
     }
 }
 
-/* Hero Section */
+
+
 
 .hero {
     height: 90vh;

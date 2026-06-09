@@ -1,25 +1,39 @@
-// Mobile Navigation
-
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 
-hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-});
-
-// Product Grid
+if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+}
 
 const productGrid = document.getElementById("product-grid");
+const loading = document.getElementById("loading");
+const errorMessage = document.getElementById("error-message");
 
 async function loadProducts() {
 
+    if (!productGrid) return;
+
     try {
+
+        if (loading) {
+            loading.style.display = "block";
+        }
 
         const response = await fetch(
             "https://fakestoreapi.com/products"
         );
 
+        if (!response.ok) {
+            throw new Error("Failed to fetch products");
+        }
+
         const products = await response.json();
+
+        if (loading) {
+            loading.style.display = "none";
+        }
 
         products.forEach(product => {
 
@@ -27,9 +41,16 @@ async function loadProducts() {
 
             card.classList.add("product-card");
 
+            card.style.cursor = "pointer";
+
+            card.addEventListener("click", () => {
+                window.location.href =
+                    `products.html?id=${product.id}`;
+            });
+
             card.innerHTML = `
-                <img 
-                    src="${product.image}" 
+                <img
+                    src="${product.image}"
                     alt="${product.title}"
                     loading="lazy"
                 >
@@ -40,6 +61,10 @@ async function loadProducts() {
 
                     <p class="product-price">
                         $${product.price}
+                    </p>
+
+                    <p>
+                        ${product.description.substring(0, 80)}...
                     </p>
 
                     <button class="add-cart-btn">
@@ -53,17 +78,37 @@ async function loadProducts() {
 
         });
 
+    } catch (error) {
+
+        if (loading) {
+            loading.style.display = "none";
+        }
+
+        if (errorMessage) {
+            errorMessage.textContent =
+                "Unable to load products. Please try again later.";
+        }
+
+        console.error(error);
     }
+}
 
-    catch(error) {
+loadProducts();
 
-        console.error(
-            "Error loading products:",
-            error
-        );
+function updateCartCount() {
 
+    const cart =
+        JSON.parse(
+            localStorage.getItem("cart")
+        ) || [];
+
+    const cartCount =
+        document.querySelector(".cart-count");
+
+    if (cartCount) {
+        cartCount.textContent = cart.length;
     }
 
 }
 
-loadProducts();
+updateCartCount();

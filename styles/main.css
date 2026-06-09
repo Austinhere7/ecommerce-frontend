@@ -241,7 +241,6 @@ main p {
 
 }
 
-/* Products Section */
 
 .products-section {
     padding: 60px 30px;
@@ -253,7 +252,6 @@ main p {
     font-size: 2rem;
 }
 
-/* Grid */
 
 .product-grid {
     display: grid;
@@ -262,8 +260,6 @@ main p {
 
     gap: 25px;
 }
-
-/* Card */
 
 .product-card {
     background: white;
@@ -354,4 +350,18 @@ main p {
         grid-template-columns: 1fr;
     }
 
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 20px;
+}
+
+
+.error-message {
+    text-align: center;
+    color: red;
+    padding: 20px;
+    font-weight: bold;
 }

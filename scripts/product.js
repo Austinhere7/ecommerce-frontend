@@ -118,9 +118,6 @@ async function loadProduct() {
         const addCartBtn =
             document.getElementById("add-cart-btn");
 
-        const productImage =
-            document.getElementById("product-image");
-
         const quantityDisplay =
             document.getElementById("quantity");
 
@@ -174,9 +171,6 @@ async function loadProduct() {
 
         });
 
-
-
-
         addCartBtn.addEventListener("click", () => {
 
             let cart =
@@ -190,23 +184,43 @@ async function loadProduct() {
             const selectedColor =
                 colorSelect.value;
 
-            for (
-                let i = 0;
-                i < quantity;
-                i++
-            ) {
+            const existingProduct =
+                cart.find(item =>
+
+                    item.id === product.id &&
+                    item.size === selectedSize &&
+                    item.color === selectedColor
+
+                );
+
+            if (existingProduct) {
+
+                existingProduct.quantity += quantity;
+
+            }
+
+            else {
 
                 cart.push({
+
                     ...product,
+
                     size: selectedSize,
-                    color: selectedColor
+
+                    color: selectedColor,
+
+                    quantity: quantity
+
                 });
 
             }
 
             localStorage.setItem(
+
                 "cart",
+
                 JSON.stringify(cart)
+
             );
 
             updateCartCount();
@@ -216,6 +230,16 @@ async function loadProduct() {
 
             successMessage.style.color =
                 "green";
+
+            successMessage.style.opacity =
+                "1";
+
+            setTimeout(() => {
+
+                successMessage.style.opacity =
+                    "0";
+
+            }, 3000);
 
         });
 
@@ -241,8 +265,15 @@ function updateCartCount() {
 
     if (cartCount) {
 
+        const totalItems =
+            cart.reduce(
+                (sum, item) =>
+                    sum + item.quantity,
+                0
+            );
+
         cartCount.textContent =
-            cart.length;
+            totalItems;
 
     }
 

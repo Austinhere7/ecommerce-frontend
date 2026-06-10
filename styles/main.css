@@ -497,6 +497,9 @@ main p {
 }
 
 #success-message {
-    margin-top: 10px;
+    margin-top: 15px;
     font-weight: bold;
+    color: green;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
